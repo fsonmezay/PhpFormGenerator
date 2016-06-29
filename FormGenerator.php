@@ -81,27 +81,6 @@ class Form {
 
   }
 
-  // return object as array
-  /*private function asArray() {
-    $result = array();
-
-    $result["title"] = $this->title;
-    $result["action"] = $this->action;
-    $result["inputFields"] = array();
-    foreach($this->inputFields as $key => $val) {
-      $result["inputFields"][] = $val->asArray();
-    }
-    $result["description"] = $this->description;
-    $result["buttonText"] = $this->buttonText;
-    $result["buttonValue"] = $this->buttonValue;
-    $result["method"] = $this->method;
-    $result["enctype"] = $this->enctype;
-    $result["displayCapthca"] = $this->displayCapthca;
-    $result["isReadOnly"] = $this->isReadOnly;
-
-    return $result;
-  }*/
-
   public function getHtml() {
     $result = '<div class="form-container">';
     $result .= '<div class="row">';
@@ -168,21 +147,7 @@ class InputField{
     $this->selectedItems = $selectedItems;
     $this->pleaseSelectEnabled = $pleaseSelectEnabled;
   }
-
-  // return formItam as array
-  /*private function asArray() {
-    $result = array();
-    $result["name"] = $this->name;
-    $result["type"] = $this->type;
-    $result["title"] = $this->title;
-    $result["description"] = $this->description;
-    $result["value"] = $this->value;
-    $result["isMultiSelectable"] = $this->isMultiSelectable;
-    $result["multipleSelectionCounter"] = $this->multipleSelectionCounter;
-    $result["isReadOnly"] = $this->isReadOnly;
-    return $result;
-  }*/
-
+  
   // return html of form field
   public function getHtml(){
     $result = '<div class="form-group">';
@@ -257,7 +222,7 @@ class InputField{
       $result .= '<option value="null"> -- Please Select --</option>';
       //array_unshift($this->itemList, $item);
     }
-    
+
     foreach($this->itemList as $key => $val) {
       $selectedText = "";
       if(in_array($key, $this->selectedItems)) {
