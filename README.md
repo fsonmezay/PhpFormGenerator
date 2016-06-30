@@ -1,26 +1,48 @@
 # PhpFormGenerator
 
-Easily generate html forms with php
+Easily generate html forms with php.
 
+## Getting Started
+
+You need to add FormGenerator.php file to your project with the following code:
 ```
 <?php
-
-$formGenerator = new FormGenerator();
-$formGenerator->addField("İsim", "fieldName", "text", "", "Place this", "sub");
-$formGenerator->addField("Soyisim", "fieldLastName", "text");
-$formGenerator->addField("Şifreniz", "Password", "password", "aabbcc11", "en Az 8 Karakter");
-$formGenerator->addField("Long Text", "textarea_11", "textarea", "Some Text", "Longer description");
-$formGenerator->addField("Dosya Yükleyin", "file_01", "file", "fileyukle",  "sadece psd");
-$formGenerator->addField("Adınız", "name_s_0_1" , "text", "ferdi", "Adınızı yazın", "sadece ilk adınız", true);
-
-$cities = array(1=>"Adana", 6=>"Ankara", 7=>"Antalya", 16=>"Bursa", 26=>"Eskişehir", 38=>"Kayseri", "yok"=>"yooo");
-$selectedCities=array(7, 26);
-$formGenerator->addField("Şehir", "city_name", "select", 1, "", "Current City", true, false, $cities, $selectedCities, true);
-
-$formGenerator->makeForm("Form Title", "action.php", $formGenerator->getInputFields(), "Description");
-
-$formGenerator->display();
-
+  require "FormGenerator.php";
 ?>
+```
 
+Then create an instance of this class:
+```
+<?php
+  $form = new FormGenerator();
+?>
+```
+
+You can add html form fields using the functions explained below.
+
+### Select
+
+Create a select with minimal and default parameters:
+```
+<?php
+$form->addSelect($title, $fieldName);
+// $form->addSelect("Choose Your City", "city");
+?>
+```
+This code will create an html select element with a " -- Please Select --" option.
+
+To fill this select we will use the array below.
+```
+<?php
+$cities = array(1=>"Istanbul", 2=>"Athens", 3=>"Sofia", 4=>"Moscow", 5=>"Prague", 6=>"Barcelona");
+?>
+```
+
+And here is how you create a non-empty html select element:
+```
+<?php
+$cities = array(1=>"Istanbul", 2=>"Athens", 3=>"Sofia", 4=>"Moscow", 5=>"Prague", 6=>"Barcelona");
+$form->addSelect($title, $fieldName, $valueArray);
+// $form->addSelect("Choose Your City", "city", $cities);
+?>
 ```

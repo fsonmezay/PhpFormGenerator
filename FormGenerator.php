@@ -22,6 +22,47 @@ class FormGenerator {
                                           $pleaseSelectEnabled);
   }
 
+  // new textfield
+  public function addText($title, $name, $value="", $placeholder="", $description="", $isReadOnly=false) {
+    $this->inputFields[] = new InputField($title, InputFieldType::TEXT, $name, $value, $placeholder, $description, $isReadOnly);
+  }
+
+  // new password field
+  public function addPassword($title, $name, $value="", $placeholder="", $description="", $isReadOnly=false) {
+    $this->inputFields[] = new InputField($title, InputFieldType::PASSWORD, $name, $value, $placeholder, $description, $isReadOnly);
+  }
+
+  // new hidden field
+  public function addHidden($name, $value="") {
+    $this->inputFields[] = new InputField("", InputFieldType::HIDDEN, $name, $value);
+  }
+
+  // new file field
+  public function addFile($title, $name, $value="", $placeholder="", $description="", $isReadOnly=false) {
+    $this->inputFields[] = new InputField($title, InputFieldType::FILE, $name, $value, $placeholder, $description, $isReadOnly);
+  }
+
+  // new textarea
+  public function addTextarea($title, $name, $value="", $placeholder="", $description="", $isReadOnly=false) {
+    $this->inputFields[] = new InputField($title, InputFieldType::TEXTAREA, $name, $value, $placeholder, $description, $isReadOnly);
+  }
+
+  // new radio list
+  public function addRadio($title, $name, $value="", $description="", $isReadOnly=false, $itemList = array(), $selectedItems = array()) {
+    $this->inputFields[] = new InputField($title, InputFieldType::RADIO, $name, $value, "", $description, $isReadOnly, false, $itemList, $selectedItems);
+  }
+
+  // new checkbox list
+  public function addCheckbox($title, $name, $value="", $description="", $isReadOnly=false, $itemList = array(), $selectedItems = array()) {
+    $this->inputFields[] = new InputField($title, InputFieldType::CHECKBOX, $name, $value, "", $description, $isReadOnly, false, $itemList, $selectedItems);
+  }
+
+  // new select list
+  public function addSelect($title, $name, $itemList = array(), $selectedItems = array(), $value="", $description="", $isReadOnly=false, $isMultiSelectable = false, $pleaseSelectEnabled = true) {
+    $this->inputFields[] = new InputField($title, InputFieldType::SELECT, $name, $value, "", $description, $isReadOnly, $isMultiSelectable, $itemList, $selectedItems, $pleaseSelectEnabled);
+
+  }
+
   public function getInputFields() {
     return $this->inputFields;
   }
@@ -172,6 +213,7 @@ class InputField{
       $result .= '<div class="row">';
       $result .= '<div class="col-md-12">';
       $result .= $this->getCommonLabelForField();
+      $result .= $this->getCommonDescriptionForField();
       $result .= '</div>';
       $result .= '</div>';
 
@@ -181,13 +223,14 @@ class InputField{
       $result .= '</div>';
       $result .= '</div>';
 
-      $result .= $this->getCommonDescriptionForField();
     }
 
     else if($this->isSelect($type)) {
       $this->addValueToSelectedItems($this->value);
       $multiSelectText = "";
       $namePostfix = "";
+      $disabledText = "";
+
       if($this->isMultiSelectable) {
         $multiSelectText = 'MULTIPLE size="6"';
         if($this->isCheckbox($type)) {
@@ -195,8 +238,12 @@ class InputField{
         }
       }
 
+      if($this->isReadOnly) {
+        $disabledText = "disabled";
+      }
+
       $result .= $this->getCommonLabelForField();
-      $result .= '<select name="'.$this->name.''.$namePostfix.'" class="form-control" '.$multiSelectText.'>';
+      $result .= '<select name="'.$this->name.''.$namePostfix.'" class="form-control" '.$multiSelectText.' '.$disabledText.'>';
       $result .= $this->getSelectOptions();
       $result .= '</select>';
       $result .= $this->getCommonDescriptionForField();
@@ -209,22 +256,26 @@ class InputField{
     return $result;
   }
 
+  //add label
   private function getCommonLabelForField() {
     return '<label class="control-label" for="'.$this->name.'">'.$this->title.'</label>';
   }
 
+  // add description below input field
   private function getCommonDescriptionforField() {
     if(strlen($this->description) > 0) {
       return '<span id="'.$this->name.'-help" class="help-block">'.$this->description.'</span>';
     }
   }
 
+  // if value is set, and field requires selectedItems add value to selected items
   private function addValueToSelectedItems($value){
     if(strlen($value) > 0) {
       $this->selectedItems[] = $value;
     }
   }
 
+  // add <option>'s to select
   private function getSelectOptions() {
     $result = "";
     if($this->pleaseSelectEnabled) {
@@ -241,12 +292,17 @@ class InputField{
     return $result;
   }
 
-  //get items for checkboz or radio
+  //get items for checkbox or radio
   private function getCheckboxOrRadioOptions($type) {
     $result = "";
     $namePostfix = "";
+    $disabledText = "";
     if($this->isCheckbox($type)) {
       $namePostfix = "[]";
+    }
+
+    if($this->isReadOnly) {
+      $disabledText = "disabled";
     }
 
     foreach($this->itemList as $key => $val) {
@@ -254,9 +310,9 @@ class InputField{
       if(in_array($key, $this->selectedItems)) {
         $selectedText = 'checked="checked"';
       }
-      $result .= '<div class="'.$type.'">';
+      $result .= '<div class="'.$type. ' '.$disabledText.'">';
       $result .= '<label>';
-      $result .= '<input type="'.$type.'" value="'.$key.'" name="'.$this->name.''.$namePostfix.'" '.$selectedText.' />' . $val;
+      $result .= '<input type="'.$type.'" value="'.$key.'" name="'.$this->name.''.$namePostfix.'" '.$selectedText.' '.$disabledText.' />' . $val;
       $result .= '</label>';
       $result .= '</div>';
     }
