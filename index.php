@@ -35,7 +35,7 @@
     $cities = array(1=>"Istanbul", 2=>"Athens", 3=>"Sofia", 4=>"Moscow", 5=>"Prague", 6=>"Barcelona");
     $selectedCities = array();
 
-    $form->addSelect("Select Your Favourite City", "city", $cities);
+    $form->addSelect("Select Your Favourite City", "city", $cities, array(2,6));
     $form->addSelect("City", "city_id", $cities, array(),  "Choose your current city!", true, true);
     $form->addRadio("Şehir Radio", "city_nameradio", "", "", true, $cities, array(6,16));
     $form->addCheckbox("Şehir Check", "city_namecheck", 7, "", false, $cities, array(6));

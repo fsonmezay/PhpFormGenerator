@@ -77,3 +77,20 @@ The output will be as follows
    </select>
 </div>
 ```
+
+If you want some items selected, you can set `$selectedItems` .
+
+For instance
+ - if you want Istanbul selected you must set ` $selectedItems = new array(1)`
+ - if you want Athens and Barcelona selected you can set ` $selectedItems = new array(2,6)`
+  - **Note**: you must set `$isMultiSelectable = true` to see multiple selected items.
+
+### Text / Password / Hidden / File fields
+
+#### Hidden field
+
+Hidden field creation is very simple. The definition of function is as follows 
+
+```php
+ $form->addHidden();
+```
