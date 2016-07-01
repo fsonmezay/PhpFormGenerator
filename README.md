@@ -2,7 +2,7 @@
 
 Simplest php form generator ever.
 
-This library generates [Bootstrap](http://getbootstrap.com/)  compatible html forms.
+This library generates [Bootstrap 3.x](http://getbootstrap.com/)  compatible html forms.
 
 ## Getting Started
 
