@@ -89,8 +89,120 @@ For instance
 
 #### Hidden field
 
-Hidden field creation is very simple. The definition of function is as follows 
+Hidden field creation is very simple. you must only set the field name, and value.
 
 ```php
- $form->addHidden();
+ // $form->addHidden($name, $value);
+ $form->addHidden("my_hidden_field", "Hidden Value");
 ```
+
+And the output value will be
+
+```html
+<div class="form-group">
+  <label class="control-label" for="my_hidden_field"></label>
+  <input value="Hidden Value" name="my_hidden_field" id="my_hidden_field" placeholder="" class="form-control" aria-describedby="my_hidden_field-help" type="hidden">
+</div>
+```
+
+#### Text field
+
+Text fields are most commonly used elements in html forms. the definition of `addText()` function is as follows.
+
+```php
+<?php
+  public function addText(
+    $label,
+    $name,
+    $value="",
+    $placeholder="",
+    $description="",
+    $isReadOnly=false);
+ ?>
+ ```
+
+ **$label** and **$name** parameters are required. Others are optional.
+
+Create a text field
+
+```php
+<?php
+  $form->addText("Your Username", "username");
+?>
+```
+
+**Output**
+```html
+<div class="form-group">
+  <label class="control-label" for="username">Your Username</label>
+  <input value="" name="username" id="username" placeholder="" class="form-control" aria-describedby="username-help" type="text">
+</div>
+```
+
+Create a text field with initial value
+
+```php
+<?php
+  $form->addText("Your Username", "username", "fsonmezay");
+?>
+```
+
+**Output**
+```html
+<div class="form-group">
+    <label class="control-label" for="username">Your Username</label>
+    <input value="fsonmezay" name="username" id="username" placeholder="" class="form-control" aria-describedby="username-help" type="text">
+</div>
+```
+
+
+ If you want to make the text field disabled, just set `$isReadOnly = true`;
+
+ Here is sample call for disabled text field.
+
+ ```php
+ <?php
+  $form->addText("Your Username", "username", "fsonmezay", "", "Your Unique username", true);
+ ?>
+ ```
+
+ **Output**
+ ```html
+ <div class="form-group">
+     <label class="control-label" for="username">Your Username</label>
+     <input value="fsonmezay" name="username" id="username" placeholder="" class="form-control" disabled="" aria-describedby="username-help" type="text" />
+   	<span id="username-help" class="help-block">Your Unique username</span>
+ </div>
+ ```
+
+ #### Password and File fields
+
+ Function descriptions of password and file fields are same as the text field.
+
+ ##### Password function definition
+
+ ```php
+ <?php
+   public function addPassword(
+     $label,
+     $name,
+     $value="",
+     $placeholder="",
+     $description="",
+     $isReadOnly=false);
+  ?>
+  ```
+
+  ##### File function definition
+
+  ```php
+  <?php
+    public function addFile(
+      $label,
+      $name,
+      $value="",
+      $placeholder="",
+      $description="",
+      $isReadOnly=false);
+   ?>
+   ```

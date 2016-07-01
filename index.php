@@ -34,14 +34,16 @@
 
     $cities = array(1=>"Istanbul", 2=>"Athens", 3=>"Sofia", 4=>"Moscow", 5=>"Prague", 6=>"Barcelona");
     $selectedCities = array();
-
+    $form->addText("Your Username", "username");
+    $form->addText("Your Username", "username", "fsonmezay");
+    $form->addText("Your Username", "username", "fsonmezay", "", "Your Unique username", true);
     $form->addSelect("Select Your Favourite City", "city", $cities, array(2,6));
     $form->addSelect("City", "city_id", $cities, array(),  "Choose your current city!", true, true);
     $form->addRadio("Şehir Radio", "city_nameradio", "", "", true, $cities, array(6,16));
     $form->addCheckbox("Şehir Check", "city_namecheck", 7, "", false, $cities, array(6));
     $form->addText("NameText", "textfieldName", "11", "Place this", "subliminall", true);
     $form->addTextarea("NameTextArea", "textareafieldName", "", "Place this", "subliminall", false);
-    $form->addHidden("hiddenName", "11");
+    $form->addHidden("my_hidden_field", "Hidden Value");
 
     $form->addField("Name", "text", "fieldName", "", "Place this", "subliminall");
     $form->addField("Soyisim", "text", "fieldLastName");
