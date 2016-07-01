@@ -1,7 +1,8 @@
 # PhpFormGenerator
 
 Simplest php form generator ever.
-This library
+
+This library generates [Bootstrap](http://getbootstrap.com/)  compatible html forms.
 
 ## Getting Started
 
