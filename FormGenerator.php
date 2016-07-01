@@ -3,33 +3,33 @@ class FormGenerator {
   private $inputFields = array();
   private $form;
 
-  public function makeForm($title, $action, $inputFields,
+  public function makeForm($label, $action, $inputFields,
                            $description = "", $buttonText = "Submit", $buttonValue = 0,
                            $method = "GET", $enctype = "application/x-www-form-urlencoded",
                            $displayCapthca = false, $isReadOnly = false) {
-    $this->form = new Form($title, $action, $inputFields, $description,
+    $this->form = new Form($label, $action, $inputFields, $description,
                            $buttonText, $buttonValue, $method, $enctype,
                            $displayCapthca, $isReadOnly);
   }
 
-  public function addField($title, $type, $name, $value = "", $placeholder = "",
+  public function addField($label, $type, $name, $value = "", $placeholder = "",
                            $description = "", $isReadOnly = false,
                            $isMultiSelectable = false, $itemList = array(),
                            $selectedItems = array(), $pleaseSelectEnabled = true) {
-    $this->inputFields[] = new InputField($title, $type, $name, $value, $placeholder,
+    $this->inputFields[] = new InputField($label, $type, $name, $value, $placeholder,
                                           $description, $isReadOnly, $isMultiSelectable,
                                           $itemList, $selectedItems,
                                           $pleaseSelectEnabled);
   }
 
   // new textfield
-  public function addText($title, $name, $value="", $placeholder="", $description="", $isReadOnly=false) {
-    $this->inputFields[] = new InputField($title, InputFieldType::TEXT, $name, $value, $placeholder, $description, $isReadOnly);
+  public function addText($label, $name, $value="", $placeholder="", $description="", $isReadOnly=false) {
+    $this->inputFields[] = new InputField($label, InputFieldType::TEXT, $name, $value, $placeholder, $description, $isReadOnly);
   }
 
   // new password field
-  public function addPassword($title, $name, $value="", $placeholder="", $description="", $isReadOnly=false) {
-    $this->inputFields[] = new InputField($title, InputFieldType::PASSWORD, $name, $value, $placeholder, $description, $isReadOnly);
+  public function addPassword($label, $name, $value="", $placeholder="", $description="", $isReadOnly=false) {
+    $this->inputFields[] = new InputField($label, InputFieldType::PASSWORD, $name, $value, $placeholder, $description, $isReadOnly);
   }
 
   // new hidden field
@@ -38,29 +38,28 @@ class FormGenerator {
   }
 
   // new file field
-  public function addFile($title, $name, $value="", $placeholder="", $description="", $isReadOnly=false) {
-    $this->inputFields[] = new InputField($title, InputFieldType::FILE, $name, $value, $placeholder, $description, $isReadOnly);
+  public function addFile($label, $name, $value="", $placeholder="", $description="", $isReadOnly=false) {
+    $this->inputFields[] = new InputField($label, InputFieldType::FILE, $name, $value, $placeholder, $description, $isReadOnly);
   }
 
   // new textarea
-  public function addTextarea($title, $name, $value="", $placeholder="", $description="", $isReadOnly=false) {
-    $this->inputFields[] = new InputField($title, InputFieldType::TEXTAREA, $name, $value, $placeholder, $description, $isReadOnly);
+  public function addTextarea($label, $name, $value="", $placeholder="", $description="", $isReadOnly=false) {
+    $this->inputFields[] = new InputField($label, InputFieldType::TEXTAREA, $name, $value, $placeholder, $description, $isReadOnly);
   }
 
   // new radio list
-  public function addRadio($title, $name, $value="", $description="", $isReadOnly=false, $itemList = array(), $selectedItems = array()) {
-    $this->inputFields[] = new InputField($title, InputFieldType::RADIO, $name, $value, "", $description, $isReadOnly, false, $itemList, $selectedItems);
+  public function addRadio($label, $name, $value="", $description="", $isReadOnly=false, $itemList = array(), $selectedItems = array()) {
+    $this->inputFields[] = new InputField($label, InputFieldType::RADIO, $name, $value, "", $description, $isReadOnly, false, $itemList, $selectedItems);
   }
 
   // new checkbox list
-  public function addCheckbox($title, $name, $value="", $description="", $isReadOnly=false, $itemList = array(), $selectedItems = array()) {
-    $this->inputFields[] = new InputField($title, InputFieldType::CHECKBOX, $name, $value, "", $description, $isReadOnly, false, $itemList, $selectedItems);
+  public function addCheckbox($label, $name, $value="", $description="", $isReadOnly=false, $itemList = array(), $selectedItems = array()) {
+    $this->inputFields[] = new InputField($label, InputFieldType::CHECKBOX, $name, $value, "", $description, $isReadOnly, false, $itemList, $selectedItems);
   }
 
   // new select list
-  public function addSelect($title, $name, $itemList = array(), $selectedItems = array(), $value="", $description="", $isReadOnly=false, $isMultiSelectable = false, $pleaseSelectEnabled = true) {
-    $this->inputFields[] = new InputField($title, InputFieldType::SELECT, $name, $value, "", $description, $isReadOnly, $isMultiSelectable, $itemList, $selectedItems, $pleaseSelectEnabled);
-
+  public function addSelect($label, $name, $itemList = array(), $selectedItems = array(), $description="", $isReadOnly=false, $isMultiSelectable = false, $pleaseSelectEnabled = true) {
+    $this->inputFields[] = new InputField($label, InputFieldType::SELECT, $name, "", "", $description, $isReadOnly, $isMultiSelectable, $itemList, $selectedItems, $pleaseSelectEnabled);
   }
 
   public function getInputFields() {
@@ -82,7 +81,7 @@ class FormGenerator {
 class Form {
 
   // required parameters
-  private $title;
+  private $label;
   private $action;
   private $inputFields = array(); // array of InputField Objects
 
@@ -154,7 +153,7 @@ class Form {
 class InputField{
 
   // parameters
-  private $title;
+  private $label;
   private $name;
   private $type;
   private $value; // selected value for select, radio, checkbox
@@ -167,11 +166,11 @@ class InputField{
   private $pleaseSelectEnabled = true;
 
   // construct with all parameters
-  public function __construct($title, $type, $name, $value = "", $placeholder = "",
+  public function __construct($label, $type, $name, $value = "", $placeholder = "",
                               $description = "", $isReadOnly = false,
                               $isMultiSelectable = false, $itemList = array(),
                               $selectedItems = array(), $pleaseSelectEnabled = true) {
-    $this->title = $title;
+    $this->title = $label;
     $this->type = $type;
     $this->name = $name;
     $this->value = $value;

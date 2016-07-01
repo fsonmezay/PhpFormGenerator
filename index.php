@@ -32,10 +32,11 @@
     }
     $form = new FormGenerator();
 
-    $cities = array(1=>"Adana", 6=>"Ankara", 7=>"Antalya", 16=>"Bursa", 26=>"Eskişehir", 38=>"Kayseri", "yok"=>"yooo");
-    $selectedCities=array(1, 7, 26);
+    $cities = array(1=>"Istanbul", 2=>"Athens", 3=>"Sofia", 4=>"Moscow", 5=>"Prague", 6=>"Barcelona");
+    $selectedCities = array();
 
-    $form->addSelect("City", "city_id", $cities, array(),  7, "Choose your current city!", true, true);
+    $form->addSelect("Select Your Favourite City", "city", $cities);
+    $form->addSelect("City", "city_id", $cities, array(),  "Choose your current city!", true, true);
     $form->addRadio("Şehir Radio", "city_nameradio", "", "", true, $cities, array(6,16));
     $form->addCheckbox("Şehir Check", "city_namecheck", 7, "", false, $cities, array(6));
     $form->addText("NameText", "textfieldName", "11", "Place this", "subliminall", true);
