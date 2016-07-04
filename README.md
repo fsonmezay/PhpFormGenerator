@@ -87,7 +87,7 @@ For instance
 
 ### Text / Password / Hidden / File fields
 
-#### Hidden field
+**Hidden Field**
 
 Hidden field creation is very simple. you must only set the field name, and value.
 
@@ -105,7 +105,7 @@ And the output value will be
 </div>
 ```
 
-#### Text field
+**Text field**
 
 Text fields are most commonly used elements in html forms. the definition of `addText()` function is as follows.
 
@@ -175,11 +175,11 @@ Create a text field with initial value
  </div>
  ```
 
- #### Password and File fields
+ **Password and File fields**
 
  Function descriptions of password and file fields are same as the text field.
 
- ##### Password function definition
+ **Password function definition**
 
  ```php
  <?php
@@ -193,7 +193,7 @@ Create a text field with initial value
   ?>
   ```
 
-  ##### File function definition
+  **File function definition**
 
   ```php
   <?php
