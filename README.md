@@ -179,7 +179,7 @@ Create a text field with initial value
 
  Function descriptions of password and file fields are same as the text field.
 
- **Password function definition**
+ **addPassword() definition**
 
  ```php
  <?php
@@ -193,7 +193,7 @@ Create a text field with initial value
   ?>
   ```
 
-  **File function definition**
+  **addFile() definition**
 
   ```php
   <?php
