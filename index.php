@@ -23,44 +23,70 @@
 
 <body>
   <div class="container">
-    <?php
-    if(isset($_POST)){
-      echo "<pre>";
-      print_r($_POST);
-      print_r($_FILES);
-      echo "</pre>";
-    }
-    $form = new FormGenerator();
 
+
+    <?php
     $cities = array(1=>"Istanbul", 2=>"Athens", 3=>"Sofia", 4=>"Moscow", 5=>"Prague", 6=>"Barcelona");
     $selectedCities = array();
-    $form->addText("Your Username", "username");
-    $form->addText("Your Username", "username", "fsonmezay");
-    $form->addText("Your Username", "username", "fsonmezay", "", "Your Unique username", true);
-    $form->addSelect("Select Your Favourite City", "city", $cities, array(2,6));
-    $form->addSelect("City", "city_id", $cities, array(),  "Choose your current city!", true, true);
-    $form->addRadio("Şehir Radio", "city_nameradio", "", "", true, $cities, array(6,16));
-    $form->addCheckbox("Şehir Check", "city_namecheck", 7, "", false, $cities, array(6));
-    $form->addText("NameText", "textfieldName", "11", "Place this", "subliminall", true);
-    $form->addTextarea("NameTextArea", "textareafieldName", "", "Place this", "subliminall", false);
-    $form->addHidden("my_hidden_field", "Hidden Value");
 
-    $form->addField("Name", "text", "fieldName", "", "Place this", "subliminall");
-    $form->addField("Soyisim", "text", "fieldLastName");
-    $form->addField("Şifreniz", "password", "Password", "aabbcc11", "en Az 8 Karakter");
-    $form->addField("Long Text", "textarea", "textarea_11", "Some Text", "", "Longer description",true);
-    $form->addField("Dosya Yükleyin", "file", "file_01", "fileyukle",  "sadece psd");
-    $form->addField("Adınız", "text", "name_s_0_1" , "ferdi", "Adınızı yazın", "sadece ilk adınız", true);
+    $textFieldForm = new FormGenerator();
+    $textFieldForm->addText("Minimal text field", "text-minimal");
+    $textFieldForm->addText("Text field with initial value", "text-initial", "Text Field Value");
+    $textFieldForm->addText("Text field with placeholder", "text-placeholder", "", "This is placeholder");
+    $textFieldForm->addText("Text field with description", "text-description", "", "", "This is description");
+    $textFieldForm->addText("Disabled text field", "text-disabled", "Some Value", "This is placeholder", "", true);
+    $textFieldForm->makeForm("Text Fields Demo Form", "?", $textFieldForm->getInputFields(), "", "Submit", "", "POST", "multipart/form-data");
 
+    $passwordFieldForm = new FormGenerator();
+    $passwordFieldForm->addPassword("Minimal password", "password-minimal");
+    $passwordFieldForm->addPassword("Password with initial value", "password-initial", "initialValue");
+    $passwordFieldForm->addPassword("Password with placeholder", "password-placeholder", "", "Password Placeholder");
+    $passwordFieldForm->addPAssword("Password with description", "password-description", "", "", "This is password description");
+    $passwordFieldForm->addPassword("Disabled password field", "password-disabled", "initialPasswordValue", "", "", true);
+    $passwordFieldForm->makeForm("Password Fields Demo Form", "?", $passwordFieldForm->getInputFields(), "Password Form Description", "Submit Password", "", "POST", "multipart/form-data");
 
-    $form->addField("Şehir", "radio", "city_namer", 1, "", "Current City", false, false, $cities, $selectedCities);
-    $form->addField("Şehir", "checkbox", "city_namec", 6, "", "Current City", false, false, $cities, $selectedCities);
-    $form->addField("Şehir", "select", "city_names", "", "", "", false, false, $cities, $selectedCities, true);
+    /* HIDDEN FIELD
+    $hiddendFieldForm = new FormGenerator();
+    $hiddendFieldForm->addHidden("Minimal Hidden", "password-minimal");
+    $hiddendFieldForm->makeForm("Hidden Field Demo Form", "?", $hiddendFieldForm->getInputFields(), "Password Form Description", "Submit Password", "", "POST", "multipart/form-data");
+    */
 
+    $fileFieldForm = new FormGenerator();
+    $fileFieldForm->addFile("File Minimal", "file-minimal");
+    $fileFieldForm->addFile("File With Description", "file-description", "Description");
+    $fileFieldForm->addFile("File ReadOnly", "file-readonly", "", true);
+    $fileFieldForm->makeForm("File Fields Demo Form", "?", $fileFieldForm->getInputFields(), "File Form Description", "Submit File", "", "POST", "multipart/form-data");
 
-    $form->makeForm("Form Title", "?", $form->getInputFields(), "Description", "Gönder", "", "POST", "multipart/form-data");
+    $textareaForm = new FormGenerator();
+    $textareaForm->addTextarea("Textarea Minimal", "textarea-minimal");
+    $textareaForm->addTextarea("Textarea With Initial Value", "textarea-initial-value", "Hello Textarea");
+    $textareaForm->addTextarea("Textarea With Placeholder", "textarea-placeholder", "", "This is textarea placeholder");
+    $textareaForm->addTextarea("Textarea With Description", "textarea-description", "", "", "Textarea Description");
+    $textareaForm->addTextarea("Textarea Readonly", "textarea-readonly", "", "", "", true);
+    $textareaForm->makeForm("Textarea Demo Form", "?", $textareaForm->getInputFields(), "File Form Description", "Submit File", "", "POST", "multipart/form-data");
 
-    $form->display();
+    $selectFieldForm = new FormGenerator();
+    $selectFieldForm->addSelect("Select Minimal", "select-minimal", $cities);
+    $selectFieldForm->addSelect("Select With Selected Item", "select-selecteditem", $cities, array(1));
+    $selectFieldForm->addSelect("Select With Description", "select-description", $cities, array(), "This is Select Description");
+    $selectFieldForm->addSelect("Select Readonly", "select-readonly", $cities, array(2), "", true);
+    $selectFieldForm->addSelect("Select Multiple Selection", "select-multiselect", $cities, array(2, 4), "", false, true);
+    $selectFieldForm->addSelect("Select Without 'Please Select' Option", "select-pleaseSelect", $cities, array(), "", false, false, false);
+    $selectFieldForm->makeForm("Select Demo Form", "?", $selectFieldForm->getInputFields(), "Select Demo Form Description", "Submit Select", "", "POST", "multipart/form-data");
+
+    $radioForm = new FormGenerator();
+    $radioForm->addRadio("Radio minimal", "radio-minimal", $cities);
+    $radioForm->addRadio("Radio With Selection", "radio-selected", $cities, 4);
+    $radioForm->addRadio("Radio With Description", "radio-description", $cities, 3, "Radio description");
+    $radioForm->addRadio("Radio Readonly", "radio-readonly", $cities, 2, "", true);
+    $radioForm->makeForm("Radio Demo Form", "?", $radioForm->getInputFields(), "Radio Demo Form Description", "Submit Radio", "", "POST", "multipart/form-data");
+
+    $checkBoxForm = new FormGenerator();
+    $checkBoxForm->addCheckbox("Checkbox minimal", "radio-minimal", $cities);
+    $checkBoxForm->addCheckbox("Checkbox With Selection", "radio-selected", $cities, array(2,4));
+    $checkBoxForm->addCheckbox("Checkbox With Description", "radio-description", $cities, array(3,4), "Checkbox description");
+    $checkBoxForm->addCheckbox("Checkbox Readonly", "radio-readonly", $cities, array(2), "", true);
+    $checkBoxForm->makeForm("Checkbox Demo Form", "?", $checkBoxForm->getInputFields(), "Checkbox Demo Form Description", "Submit Radio", "", "POST", "multipart/form-data");
 
    ?>
   </div>

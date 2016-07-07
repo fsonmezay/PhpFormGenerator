@@ -200,9 +200,41 @@ Create a text field with initial value
     public function addFile(
       $label,
       $name,
-      $value="",
-      $placeholder="",
       $description="",
       $isReadOnly=false);
    ?>
    ```
+
+### Textarea
+
+Textarea function definition is as follows
+```php
+<?php
+public function addTextarea(
+      $label,
+      $name,
+      $value="",
+      $placeholder="",
+      $description="",
+      $isReadOnly=false);
+?>
+```
+
+Creating a textarea is same as text fields. You must set `$label`and `$name` parameters, which are required. You can also set `$value` parameter to set initial textarea value.
+
+Here is a sample call for textarea
+```php
+<?php
+  addTextarea("Long Text", "long-text", "This is initial value");
+?>
+```
+
+**Output**
+```html
+<div class="form-group">
+    <label class="control-label" for="long-text">Long Text</label>
+    <textarea id="long-text" name="long-text" class="form-control" rows="4" placeholder="">This is initial value</textarea>
+</div>
+
+```
+### Checkbox

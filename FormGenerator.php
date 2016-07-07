@@ -10,6 +10,8 @@ class FormGenerator {
     $this->form = new Form($label, $action, $inputFields, $description,
                            $buttonText, $buttonValue, $method, $enctype,
                            $displayCapthca, $isReadOnly);
+
+    echo $this->form->getHtml();
   }
 
   public function addField($label, $type, $name, $value = "", $placeholder = "",
@@ -38,8 +40,8 @@ class FormGenerator {
   }
 
   // new file field
-  public function addFile($label, $name, $value="", $placeholder="", $description="", $isReadOnly=false) {
-    $this->inputFields[] = new InputField($label, InputFieldType::FILE, $name, $value, $placeholder, $description, $isReadOnly);
+  public function addFile($label, $name, $description="", $isReadOnly=false) {
+    $this->inputFields[] = new InputField($label, InputFieldType::FILE, $name, "", "", $description, $isReadOnly);
   }
 
   // new textarea
@@ -48,13 +50,13 @@ class FormGenerator {
   }
 
   // new radio list
-  public function addRadio($label, $name, $value="", $description="", $isReadOnly=false, $itemList = array(), $selectedItems = array()) {
-    $this->inputFields[] = new InputField($label, InputFieldType::RADIO, $name, $value, "", $description, $isReadOnly, false, $itemList, $selectedItems);
+  public function addRadio($label, $name, $itemList = array(), $selectedItem="", $description="", $isReadOnly=false) {
+    $this->inputFields[] = new InputField($label, InputFieldType::RADIO, $name, $selectedItem, "", $description, $isReadOnly, false, $itemList, array());
   }
 
   // new checkbox list
-  public function addCheckbox($label, $name, $value="", $description="", $isReadOnly=false, $itemList = array(), $selectedItems = array()) {
-    $this->inputFields[] = new InputField($label, InputFieldType::CHECKBOX, $name, $value, "", $description, $isReadOnly, false, $itemList, $selectedItems);
+  public function addCheckbox($label, $name, $itemList = array(), $selectedItems = array(), $description="", $isReadOnly=false) {
+    $this->inputFields[] = new InputField($label, InputFieldType::CHECKBOX, $name, "", "", $description, $isReadOnly, false, $itemList, $selectedItems);
   }
 
   // new select list
@@ -65,15 +67,6 @@ class FormGenerator {
   public function getInputFields() {
     return $this->inputFields;
   }
-
-  public function getForm() {
-    return $this->form;
-  }
-
-  public function display(){
-    echo $this->form->getHtml();
-	}
-
 
 }
 
