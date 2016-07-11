@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="php, form, generator, form generator, php form generator">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="PhpFormGenerator">
+    <meta name="author" content="http://www.ferdisonmezay.com">
+
+
+    <title>Php Form Generator</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/custom.css">
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="form-container">
+            <form method="POST" action="?" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Text Fields Demo Form</h3>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label" for="text-minimal">Minimal text field</label>
+                            <input value="" name="text-minimal" id="text-minimal" type="text" placeholder="" class="form-control" aria-describedby="text-minimal-help" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="text-initial">Text field with initial value</label>
+                            <input value="Text Field Value" name="text-initial" id="text-initial" type="text" placeholder="" class="form-control" aria-describedby="text-initial-help" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="text-placeholder">Text field with placeholder</label>
+                            <input value="" name="text-placeholder" id="text-placeholder" type="text" placeholder="This is placeholder" class="form-control" aria-describedby="text-placeholder-help" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="text-description">Text field with description</label>
+                            <input value="" name="text-description" id="text-description" type="text" placeholder="" class="form-control" aria-describedby="text-description-help" /><span id="text-description-help" class="help-block">This is description</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="text-disabled">Disabled text field</label>
+                            <input value="Some Value" name="text-disabled" id="text-disabled" type="text" placeholder="This is placeholder" class="form-control" disabled aria-describedby="text-disabled-help" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <input type="submit" class="btn btn-info" value="Submit" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="form-container">
+            <form method="POST" action="?" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Password Fields Demo Form</h3>
+                        <p>Password Form Description</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label" for="password-minimal">Minimal password</label>
+                            <input value="" name="password-minimal" id="password-minimal" type="password" placeholder="" class="form-control" aria-describedby="password-minimal-help" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="password-initial">Password with initial value</label>
+                            <input value="initialValue" name="password-initial" id="password-initial" type="password" placeholder="" class="form-control" aria-describedby="password-initial-help" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="password-placeholder">Password with placeholder</label>
+                            <input value="" name="password-placeholder" id="password-placeholder" type="password" placeholder="Password Placeholder" class="form-control" aria-describedby="password-placeholder-help" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="password-description">Password with description</label>
+                            <input value="" name="password-description" id="password-description" type="password" placeholder="" class="form-control" aria-describedby="password-description-help" /><span id="password-description-help" class="help-block">This is password description</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="password-disabled">Disabled password field</label>
+                            <input value="initialPasswordValue" name="password-disabled" id="password-disabled" type="password" placeholder="" class="form-control" disabled aria-describedby="password-disabled-help" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <input type="submit" class="btn btn-info" value="Submit Password" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="form-container">
+            <form method="POST" action="?" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>File Fields Demo Form</h3>
+                        <p>File Form Description</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label" for="file-minimal">File Minimal</label>
+                            <input value="" name="file-minimal" id="file-minimal" type="file" placeholder="" class="form-control" aria-describedby="file-minimal-help" />
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="file-description">File With Description</label>
+                            <input value="" name="file-description" id="file-description" type="file" placeholder="" class="form-control" aria-describedby="file-description-help" /><span id="file-description-help" class="help-block">Description</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="file-disabled">File Disabled</label>
+                            <input value="" name="file-disabled" id="file-disabled" type="file" placeholder="" class="form-control" disabled aria-describedby="file-disabled-help" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <input type="submit" class="btn btn-info" value="Submit File" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="form-container">
+            <form method="POST" action="?" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Textarea Demo Form</h3>
+                        <p>File Form Description</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label" for="textarea-minimal">Textarea Minimal</label>
+                            <textarea id="textarea-minimal" name="textarea-minimal" class="form-control" rows="4" placeholder=""></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="textarea-initial-value">Textarea With Initial Value</label>
+                            <textarea id="textarea-initial-value" name="textarea-initial-value" class="form-control" rows="4" placeholder="">Hello Textarea</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="textarea-placeholder">Textarea With Placeholder</label>
+                            <textarea id="textarea-placeholder" name="textarea-placeholder" class="form-control" rows="4" placeholder="This is textarea placeholder"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="textarea-description">Textarea With Description</label>
+                            <textarea id="textarea-description" name="textarea-description" class="form-control" rows="4" placeholder=""></textarea><span id="textarea-description-help" class="help-block">Textarea Description</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="textarea-disabled">Textarea disabled</label>
+                            <textarea id="textarea-disabled" name="textarea-disabled" class="form-control" rows="4" placeholder="" disabled></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <input type="submit" class="btn btn-info" value="Submit File" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="form-container">
+            <form method="POST" action="?" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Select Demo Form</h3>
+                        <p>Select Demo Form Description</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label" for="select-minimal">Select Minimal</label>
+                            <select name="select-minimal" class="form-control">
+                                <option value="null"> -- Please Select --</option>
+                                <option value="1">Istanbul</option>
+                                <option value="2">Athens</option>
+                                <option value="3">Sofia</option>
+                                <option value="4">Moscow</option>
+                                <option value="5">Prague</option>
+                                <option value="6">Barcelona</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="select-selecteditem">Select With Selected Item</label>
+                            <select name="select-selecteditem" class="form-control">
+                                <option value="null"> -- Please Select --</option>
+                                <option value="1" selected="selected">Istanbul</option>
+                                <option value="2">Athens</option>
+                                <option value="3">Sofia</option>
+                                <option value="4">Moscow</option>
+                                <option value="5">Prague</option>
+                                <option value="6">Barcelona</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="select-description">Select With Description</label>
+                            <select name="select-description" class="form-control">
+                                <option value="null"> -- Please Select --</option>
+                                <option value="1">Istanbul</option>
+                                <option value="2">Athens</option>
+                                <option value="3">Sofia</option>
+                                <option value="4">Moscow</option>
+                                <option value="5">Prague</option>
+                                <option value="6">Barcelona</option>
+                            </select><span id="select-description-help" class="help-block">This is Select Description</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="select-disabled">Select Disabled</label>
+                            <select name="select-disabled" class="form-control" disabled>
+                                <option value="null"> -- Please Select --</option>
+                                <option value="1">Istanbul</option>
+                                <option value="2" selected="selected">Athens</option>
+                                <option value="3">Sofia</option>
+                                <option value="4">Moscow</option>
+                                <option value="5">Prague</option>
+                                <option value="6">Barcelona</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="select-multiselect">Select Multiple Selection</label>
+                            <select name="select-multiselect" class="form-control" MULTIPLE size="6">
+                                <option value="null"> -- Please Select --</option>
+                                <option value="1">Istanbul</option>
+                                <option value="2" selected="selected">Athens</option>
+                                <option value="3">Sofia</option>
+                                <option value="4" selected="selected">Moscow</option>
+                                <option value="5">Prague</option>
+                                <option value="6">Barcelona</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="select-pleaseSelect">Select Without 'Please Select' Option</label>
+                            <select name="select-pleaseSelect" class="form-control">
+                                <option value="1">Istanbul</option>
+                                <option value="2">Athens</option>
+                                <option value="3">Sofia</option>
+                                <option value="4">Moscow</option>
+                                <option value="5">Prague</option>
+                                <option value="6">Barcelona</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <input type="submit" class="btn btn-info" value="Submit Select" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="form-container">
+            <form method="POST" action="?" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Radio Demo Form</h3>
+                        <p>Radio Demo Form Description</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="control-label" for="radio-minimal">Radio minimal</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="radio ">
+                                        <label>
+                                            <input type="radio" value="1" name="radio-minimal" />Istanbul</label>
+                                    </div>
+                                    <div class="radio ">
+                                        <label>
+                                            <input type="radio" value="2" name="radio-minimal" />Athens</label>
+                                    </div>
+                                    <div class="radio ">
+                                        <label>
+                                            <input type="radio" value="3" name="radio-minimal" />Sofia</label>
+                                    </div>
+                                    <div class="radio ">
+                                        <label>
+                                            <input type="radio" value="4" name="radio-minimal" />Moscow</label>
+                                    </div>
+                                    <div class="radio ">
+                                        <label>
+                                            <input type="radio" value="5" name="radio-minimal" />Prague</label>
+                                    </div>
+                                    <div class="radio ">
+                                        <label>
+                                            <input type="radio" value="6" name="radio-minimal" />Barcelona</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="control-label" for="radio-selected">Radio With Selection</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="radio ">
+                                        <label>
+                                            <input type="radio" value="1" name="radio-selected" />Istanbul</label>
+                                    </div>
+                                    <div class="radio ">
+                                        <label>
+                                            <input type="radio" value="2" name="radio-selected" />Athens</label>
+                                    </div>
+                                    <div class="radio ">
+                                        <label>
+                                            <input type="radio" value="3" name="radio-selected" />Sofia</label>
+                                    </div>
+                                    <div class="radio ">
+                                        <label>
+                                            <input type="radio" value="4" name="radio-selected" checked="checked" />Moscow</label>
+                                    </div>
+                                    <div class="radio ">
+                                        <label>
+                                            <input type="radio" value="5" name="radio-selected" />Prague</label>
+                                    </div>
+                                    <div class="radio ">
+                                        <label>
+                                            <input type="radio" value="6" name="radio-selected" />Barcelona</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="control-label" for="radio-description">Radio With Description</label><span id="radio-description-help" class="help-block">Radio description</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="radio ">
+                                        <label>
+                                            <input type="radio" value="1" name="radio-description" />Istanbul</label>
+                                    </div>
+                                    <div class="radio ">
+                                        <label>
+                                            <input type="radio" value="2" name="radio-description" />Athens</label>
+                                    </div>
+                                    <div class="radio ">
+                                        <label>
+                                            <input type="radio" value="3" name="radio-description" checked="checked" />Sofia</label>
+                                    </div>
+                                    <div class="radio ">
+                                        <label>
+                                            <input type="radio" value="4" name="radio-description" />Moscow</label>
+                                    </div>
+                                    <div class="radio ">
+                                        <label>
+                                            <input type="radio" value="5" name="radio-description" />Prague</label>
+                                    </div>
+                                    <div class="radio ">
+                                        <label>
+                                            <input type="radio" value="6" name="radio-description" />Barcelona</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="control-label" for="radio-disabled">Radio disabled</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="radio disabled">
+                                        <label>
+                                            <input type="radio" value="1" name="radio-disabled" disabled />Istanbul</label>
+                                    </div>
+                                    <div class="radio disabled">
+                                        <label>
+                                            <input type="radio" value="2" name="radio-disabled" checked="checked" disabled />Athens</label>
+                                    </div>
+                                    <div class="radio disabled">
+                                        <label>
+                                            <input type="radio" value="3" name="radio-disabled" disabled />Sofia</label>
+                                    </div>
+                                    <div class="radio disabled">
+                                        <label>
+                                            <input type="radio" value="4" name="radio-disabled" disabled />Moscow</label>
+                                    </div>
+                                    <div class="radio disabled">
+                                        <label>
+                                            <input type="radio" value="5" name="radio-disabled" disabled />Prague</label>
+                                    </div>
+                                    <div class="radio disabled">
+                                        <label>
+                                            <input type="radio" value="6" name="radio-disabled" disabled />Barcelona</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <input type="submit" class="btn btn-info" value="Submit Radio" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="form-container">
+            <form method="POST" action="?" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Checkbox Demo Form</h3>
+                        <p>Checkbox Demo Form Description</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="control-label" for="checkbox-minimal">Checkbox minimal</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="checkbox ">
+                                        <label>
+                                            <input type="checkbox" value="1" name="checkbox-minimal[]" />Istanbul</label>
+                                    </div>
+                                    <div class="checkbox ">
+                                        <label>
+                                            <input type="checkbox" value="2" name="checkbox-minimal[]" />Athens</label>
+                                    </div>
+                                    <div class="checkbox ">
+                                        <label>
+                                            <input type="checkbox" value="3" name="checkbox-minimal[]" />Sofia</label>
+                                    </div>
+                                    <div class="checkbox ">
+                                        <label>
+                                            <input type="checkbox" value="4" name="checkbox-minimal[]" />Moscow</label>
+                                    </div>
+                                    <div class="checkbox ">
+                                        <label>
+                                            <input type="checkbox" value="5" name="checkbox-minimal[]" />Prague</label>
+                                    </div>
+                                    <div class="checkbox ">
+                                        <label>
+                                            <input type="checkbox" value="6" name="checkbox-minimal[]" />Barcelona</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="control-label" for="checkbox-selected">Checkbox With Selection</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="checkbox ">
+                                        <label>
+                                            <input type="checkbox" value="1" name="checkbox-selected[]" />Istanbul</label>
+                                    </div>
+                                    <div class="checkbox ">
+                                        <label>
+                                            <input type="checkbox" value="2" name="checkbox-selected[]" checked="checked" />Athens</label>
+                                    </div>
+                                    <div class="checkbox ">
+                                        <label>
+                                            <input type="checkbox" value="3" name="checkbox-selected[]" />Sofia</label>
+                                    </div>
+                                    <div class="checkbox ">
+                                        <label>
+                                            <input type="checkbox" value="4" name="checkbox-selected[]" checked="checked" />Moscow</label>
+                                    </div>
+                                    <div class="checkbox ">
+                                        <label>
+                                            <input type="checkbox" value="5" name="checkbox-selected[]" />Prague</label>
+                                    </div>
+                                    <div class="checkbox ">
+                                        <label>
+                                            <input type="checkbox" value="6" name="checkbox-selected[]" />Barcelona</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="control-label" for="checkbox-description">Checkbox With Description</label><span id="checkbox-description-help" class="help-block">Checkbox description</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="checkbox ">
+                                        <label>
+                                            <input type="checkbox" value="1" name="checkbox-description[]" />Istanbul</label>
+                                    </div>
+                                    <div class="checkbox ">
+                                        <label>
+                                            <input type="checkbox" value="2" name="checkbox-description[]" />Athens</label>
+                                    </div>
+                                    <div class="checkbox ">
+                                        <label>
+                                            <input type="checkbox" value="3" name="checkbox-description[]" checked="checked" />Sofia</label>
+                                    </div>
+                                    <div class="checkbox ">
+                                        <label>
+                                            <input type="checkbox" value="4" name="checkbox-description[]" checked="checked" />Moscow</label>
+                                    </div>
+                                    <div class="checkbox ">
+                                        <label>
+                                            <input type="checkbox" value="5" name="checkbox-description[]" />Prague</label>
+                                    </div>
+                                    <div class="checkbox ">
+                                        <label>
+                                            <input type="checkbox" value="6" name="checkbox-description[]" />Barcelona</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="control-label" for="checkbox-disabledl">Checkbox Disabled</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="checkbox disabled">
+                                        <label>
+                                            <input type="checkbox" value="1" name="checkbox-disabledl[]" disabled />Istanbul</label>
+                                    </div>
+                                    <div class="checkbox disabled">
+                                        <label>
+                                            <input type="checkbox" value="2" name="checkbox-disabledl[]" checked="checked" disabled />Athens</label>
+                                    </div>
+                                    <div class="checkbox disabled">
+                                        <label>
+                                            <input type="checkbox" value="3" name="checkbox-disabledl[]" disabled />Sofia</label>
+                                    </div>
+                                    <div class="checkbox disabled">
+                                        <label>
+                                            <input type="checkbox" value="4" name="checkbox-disabledl[]" disabled />Moscow</label>
+                                    </div>
+                                    <div class="checkbox disabled">
+                                        <label>
+                                            <input type="checkbox" value="5" name="checkbox-disabledl[]" disabled />Prague</label>
+                                    </div>
+                                    <div class="checkbox disabled">
+                                        <label>
+                                            <input type="checkbox" value="6" name="checkbox-disabledl[]" disabled />Barcelona</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <input type="submit" class="btn btn-info" value="Submit Radio" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
