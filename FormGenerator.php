@@ -14,16 +14,6 @@ class FormGenerator {
     echo $this->form->getHtml();
   }
 
-  public function addField($label, $type, $name, $value = "", $placeholder = "",
-                           $description = "", $isDisabled = false,
-                           $isMultiSelectable = false, $itemList = array(),
-                           $selectedItems = array(), $pleaseSelectEnabled = true) {
-    $this->inputFields[] = new InputField($label, $type, $name, $value, $placeholder,
-                                          $description, $isDisabled, $isMultiSelectable,
-                                          $itemList, $selectedItems,
-                                          $pleaseSelectEnabled);
-  }
-
   // new textfield
   public function addText($label, $name, $value="", $placeholder="", $description="", $isDisabled=false) {
     $this->inputFields[] = new InputField($label, InputFieldType::TEXT, $name, $value, $placeholder, $description, $isDisabled);

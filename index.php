@@ -81,10 +81,10 @@
     $radioForm->makeForm("Radio Demo Form", "?", $radioForm->getInputFields(), "Radio Demo Form Description", "Submit Radio", "", "POST", "multipart/form-data");
 
     $checkBoxForm = new FormGenerator();
-    $checkBoxForm->addCheckbox("Checkbox minimal", "radio-minimal", $cities);
-    $checkBoxForm->addCheckbox("Checkbox With Selection", "radio-selected", $cities, array(2,4));
-    $checkBoxForm->addCheckbox("Checkbox With Description", "radio-description", $cities, array(3,4), "Checkbox description");
-    $checkBoxForm->addCheckbox("Checkbox Disabled", "radio-disabledl", $cities, array(2), "", true);
+    $checkBoxForm->addCheckbox("Checkbox minimal", "checkbox-minimal", $cities);
+    $checkBoxForm->addCheckbox("Checkbox With Selection", "checkbox-selected", $cities, array(2,4));
+    $checkBoxForm->addCheckbox("Checkbox With Description", "checkbox-description", $cities, array(3,4), "Checkbox description");
+    $checkBoxForm->addCheckbox("Checkbox Disabled", "checkbox-disabledl", $cities, array(2), "", true);
     $checkBoxForm->makeForm("Checkbox Demo Form", "?", $checkBoxForm->getInputFields(), "Checkbox Demo Form Description", "Submit Radio", "", "POST", "multipart/form-data");
 
    ?>

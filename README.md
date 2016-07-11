@@ -20,6 +20,34 @@ Then create an instance of this class:
 ?>
 ```
 
+And you must call `makeForm()` function after you initialize the form fields explained below.
+
+`makeForm()` function definition is as follows
+
+```php
+<?php  
+public function makeForm(
+  $label,
+  $action,
+  $inputFields, # array of input fields
+  $description = "",
+  $buttonText = "Submit",
+  $buttonValue = 0,
+  $method = "GET",
+  $enctype = "application/x-www-form-urlencoded",
+  $displayCapthca = false,  # will be implemented
+  $isDisabled = false);
+?>
+```
+
+sample call for this function is :
+```php
+<?php
+  $form->makeForm("Sample form title", "form-submit-action.php", $form->getInputFields());
+?>
+```
+**__Note__** Remember to create input fields first. 
+
 You can add html form fields using the functions explained below.
 
 ### Select
@@ -32,12 +60,11 @@ public function addSelect(
   $label,
   $name,
   $itemList = array(),
-  $selectedItems = array(),  
+  $selectedItems = array(),
   $description="",
-  $isReadOnly=false,
+  $isDisabled=false,
   $isMultiSelectable = false,
-  $pleaseSelectEnabled = true
-  )
+  $pleaseSelectEnabled = true);
 ?>
 ```
 
@@ -117,7 +144,7 @@ Text fields are most commonly used elements in html forms. the definition of `ad
     $value="",
     $placeholder="",
     $description="",
-    $isReadOnly=false);
+    $isDisabled=false);
  ?>
  ```
 
@@ -189,7 +216,7 @@ Create a text field with initial value
      $value="",
      $placeholder="",
      $description="",
-     $isReadOnly=false);
+     $isDisabled=false);
   ?>
   ```
 
@@ -201,7 +228,7 @@ Create a text field with initial value
       $label,
       $name,
       $description="",
-      $isReadOnly=false);
+      $isDisabled=false);
    ?>
    ```
 
@@ -211,12 +238,12 @@ Textarea function definition is as follows
 ```php
 <?php
 public function addTextarea(
-      $label,
-      $name,
-      $value="",
-      $placeholder="",
-      $description="",
-      $isReadOnly=false);
+    $label,
+    $name,
+    $value="",
+    $placeholder="",
+    $description="",
+    $isDisabled=false);
 ?>
 ```
 
@@ -237,4 +264,243 @@ Here is a sample call for textarea
 </div>
 
 ```
-### Checkbox
+### Radio and Checkbox
+
+Let's say we have an array of cities defined as follows:
+
+```php
+<?php
+$cities = array(1=>"Istanbul",
+                2=>"Athens",
+                3=>"Sofia",
+                4=>"Moscow",
+                5=>"Prague",
+                6=>"Barcelona");
+?>
+```
+We will use this array to create radio and checkbox fields.
+
+**Radio**
+
+`addRadio()` function definition is as follows
+
+```php
+<?php
+public function addRadio(
+  $label,
+  $name,
+  $itemList = array(),
+  $selectedItem="",
+  $description="",
+  $isDisabled=false);
+?>
+```
+
+You need to specify first three parameters to create radio fields. So here's a sample call for `addRadio()` function:
+
+```php
+<?php
+  addRadio("Radio minimal", "radio-minimal", $cities);
+?>
+```
+
+**Output**
+```html
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-12">
+            <label class="control-label" for="radio-minimal">Radio minimal</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="radio ">
+                <label>
+                    <input value="1" name="radio-minimal" type="radio">Istanbul</label>
+            </div>
+            <div class="radio ">
+                <label>
+                    <input value="2" name="radio-minimal" type="radio">Athens</label>
+            </div>
+            <div class="radio ">
+                <label>
+                    <input value="3" name="radio-minimal" type="radio">Sofia</label>
+            </div>
+            <div class="radio ">
+                <label>
+                    <input value="4" name="radio-minimal" type="radio">Moscow</label>
+            </div>
+            <div class="radio ">
+                <label>
+                    <input value="5" name="radio-minimal" type="radio">Prague</label>
+            </div>
+            <div class="radio ">
+                <label>
+                    <input value="6" name="radio-minimal" type="radio">Barcelona</label>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+If you want an item selected you must set `$selectedItem` parameter. For instance
+If you want to set Moscow selected then function call must be as follows:
+
+```php
+<?php
+  addRadio("Radio Selected", "radio-selected", $cities, 4);
+?>
+```
+
+than the output will be
+
+```html
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-12">
+            <label class="control-label" for="radio-selected">Radio With Selection</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="radio ">
+                <label>
+                    <input value="1" name="radio-selected" type="radio">Istanbul</label>
+            </div>
+            <div class="radio ">
+                <label>
+                    <input value="2" name="radio-selected" type="radio">Athens</label>
+            </div>
+            <div class="radio ">
+                <label>
+                    <input value="3" name="radio-selected" type="radio">Sofia</label>
+            </div>
+            <div class="radio ">
+                <label>
+                    <input value="4" name="radio-selected" checked="checked" type="radio">Moscow</label>
+            </div>
+            <div class="radio ">
+                <label>
+                    <input value="5" name="radio-selected" type="radio">Prague</label>
+            </div>
+            <div class="radio ">
+                <label>
+                    <input value="6" name="radio-selected" type="radio">Barcelona</label>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+**Checkbox**
+
+`addCheckbox()` function definition is as follows
+
+```php
+<?php
+public function addCheckbox(
+  $label,
+  $name,
+  $itemList = array(),
+  $selectedItems = array(),
+  $description="",
+  $isDisabled=false);
+?>
+```
+
+You need to specify first three parameters to create checkbox fields. So here's a sample call for `addCheckbox()` function:
+
+```php
+<?php
+  addCheckbox("Checkbox minimal", "checkbox-minimal", $cities);
+?>
+```
+
+**Output**
+```html
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-12">
+            <label class="control-label" for="checkbox-minimal">Checkbox minimal</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="checkbox ">
+                <label>
+                    <input value="1" name="checkbox-minimal[]" type="checkbox">Istanbul</label>
+            </div>
+            <div class="checkbox ">
+                <label>
+                    <input value="2" name="checkbox-minimal[]" type="checkbox">Athens</label>
+            </div>
+            <div class="checkbox ">
+                <label>
+                    <input value="3" name="checkbox-minimal[]" type="checkbox">Sofia</label>
+            </div>
+            <div class="checkbox ">
+                <label>
+                    <input value="4" name="checkbox-minimal[]" type="checkbox">Moscow</label>
+            </div>
+            <div class="checkbox ">
+                <label>
+                    <input value="5" name="checkbox-minimal[]" type="checkbox">Prague</label>
+            </div>
+            <div class="checkbox ">
+                <label>
+                    <input value="6" name="checkbox-minimal[]" type="checkbox">Barcelona</label>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+If you want some items selected you must set `$selectedItems` parameter. For instance
+If you want to set Athens and Moscow selected then function call must be as follows:
+
+```php
+<?php
+  $selectedItems = array(4,6);
+  addCheckbox("Checkbox with Selection", "checkbox-selected", $cities, $selectedItems);
+?>
+```
+
+than the output will be
+
+```html
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-12">
+            <label class="control-label" for="checkbox-selected">Checkbox With Selection</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="checkbox ">
+                <label>
+                    <input value="1" name="checkbox-selected[]" type="checkbox">Istanbul</label>
+            </div>
+            <div class="checkbox ">
+                <label>
+                    <input value="2" name="checkbox-selected[]" checked="checked" type="checkbox">Athens</label>
+            </div>
+            <div class="checkbox ">
+                <label>
+                    <input value="3" name="checkbox-selected[]" type="checkbox">Sofia</label>
+            </div>
+            <div class="checkbox ">
+                <label>
+                    <input value="4" name="checkbox-selected[]" checked="checked" type="checkbox">Moscow</label>
+            </div>
+            <div class="checkbox ">
+                <label>
+                    <input value="5" name="checkbox-selected[]" type="checkbox">Prague</label>
+            </div>
+            <div class="checkbox ">
+                <label>
+                    <input value="6" name="checkbox-selected[]" type="checkbox">Barcelona</label>
+            </div>
+        </div>
+    </div>
+</div>
+```
