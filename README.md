@@ -4,6 +4,9 @@ Simplest php form generator ever.
 
 This library generates [Bootstrap 3.x](http://getbootstrap.com/)  compatible html forms.
 
+## Demo
+[Demo](https://fsonmezay.github.io/PhpFormGenerator/)
+
 ## Getting Started
 
 You need to add FormGenerator.php file to your project with the following code:
@@ -46,7 +49,7 @@ sample call for this function is :
   $form->makeForm("Sample form title", "form-submit-action.php", $form->getInputFields());
 ?>
 ```
-**__Note__** Remember to create input fields first. 
+**__Note__** Remember to create input fields first.
 
 You can add html form fields using the functions explained below.
 
