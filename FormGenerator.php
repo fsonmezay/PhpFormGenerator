@@ -6,32 +6,32 @@ class FormGenerator {
   public function makeForm($label, $action, $inputFields,
                            $description = "", $buttonText = "Submit", $buttonValue = 0,
                            $method = "GET", $enctype = "application/x-www-form-urlencoded",
-                           $displayCapthca = false, $isReadOnly = false) {
+                           $displayCapthca = false, $isDisabled = false) {
     $this->form = new Form($label, $action, $inputFields, $description,
                            $buttonText, $buttonValue, $method, $enctype,
-                           $displayCapthca, $isReadOnly);
+                           $displayCapthca, $isDisabled);
 
     echo $this->form->getHtml();
   }
 
   public function addField($label, $type, $name, $value = "", $placeholder = "",
-                           $description = "", $isReadOnly = false,
+                           $description = "", $isDisabled = false,
                            $isMultiSelectable = false, $itemList = array(),
                            $selectedItems = array(), $pleaseSelectEnabled = true) {
     $this->inputFields[] = new InputField($label, $type, $name, $value, $placeholder,
-                                          $description, $isReadOnly, $isMultiSelectable,
+                                          $description, $isDisabled, $isMultiSelectable,
                                           $itemList, $selectedItems,
                                           $pleaseSelectEnabled);
   }
 
   // new textfield
-  public function addText($label, $name, $value="", $placeholder="", $description="", $isReadOnly=false) {
-    $this->inputFields[] = new InputField($label, InputFieldType::TEXT, $name, $value, $placeholder, $description, $isReadOnly);
+  public function addText($label, $name, $value="", $placeholder="", $description="", $isDisabled=false) {
+    $this->inputFields[] = new InputField($label, InputFieldType::TEXT, $name, $value, $placeholder, $description, $isDisabled);
   }
 
   // new password field
-  public function addPassword($label, $name, $value="", $placeholder="", $description="", $isReadOnly=false) {
-    $this->inputFields[] = new InputField($label, InputFieldType::PASSWORD, $name, $value, $placeholder, $description, $isReadOnly);
+  public function addPassword($label, $name, $value="", $placeholder="", $description="", $isDisabled=false) {
+    $this->inputFields[] = new InputField($label, InputFieldType::PASSWORD, $name, $value, $placeholder, $description, $isDisabled);
   }
 
   // new hidden field
@@ -40,28 +40,28 @@ class FormGenerator {
   }
 
   // new file field
-  public function addFile($label, $name, $description="", $isReadOnly=false) {
-    $this->inputFields[] = new InputField($label, InputFieldType::FILE, $name, "", "", $description, $isReadOnly);
+  public function addFile($label, $name, $description="", $isDisabled=false) {
+    $this->inputFields[] = new InputField($label, InputFieldType::FILE, $name, "", "", $description, $isDisabled);
   }
 
   // new textarea
-  public function addTextarea($label, $name, $value="", $placeholder="", $description="", $isReadOnly=false) {
-    $this->inputFields[] = new InputField($label, InputFieldType::TEXTAREA, $name, $value, $placeholder, $description, $isReadOnly);
+  public function addTextarea($label, $name, $value="", $placeholder="", $description="", $isDisabled=false) {
+    $this->inputFields[] = new InputField($label, InputFieldType::TEXTAREA, $name, $value, $placeholder, $description, $isDisabled);
   }
 
   // new radio list
-  public function addRadio($label, $name, $itemList = array(), $selectedItem="", $description="", $isReadOnly=false) {
-    $this->inputFields[] = new InputField($label, InputFieldType::RADIO, $name, $selectedItem, "", $description, $isReadOnly, false, $itemList, array());
+  public function addRadio($label, $name, $itemList = array(), $selectedItem="", $description="", $isDisabled=false) {
+    $this->inputFields[] = new InputField($label, InputFieldType::RADIO, $name, $selectedItem, "", $description, $isDisabled, false, $itemList, array());
   }
 
   // new checkbox list
-  public function addCheckbox($label, $name, $itemList = array(), $selectedItems = array(), $description="", $isReadOnly=false) {
-    $this->inputFields[] = new InputField($label, InputFieldType::CHECKBOX, $name, "", "", $description, $isReadOnly, false, $itemList, $selectedItems);
+  public function addCheckbox($label, $name, $itemList = array(), $selectedItems = array(), $description="", $isDisabled=false) {
+    $this->inputFields[] = new InputField($label, InputFieldType::CHECKBOX, $name, "", "", $description, $isDisabled, false, $itemList, $selectedItems);
   }
 
   // new select list
-  public function addSelect($label, $name, $itemList = array(), $selectedItems = array(), $description="", $isReadOnly=false, $isMultiSelectable = false, $pleaseSelectEnabled = true) {
-    $this->inputFields[] = new InputField($label, InputFieldType::SELECT, $name, "", "", $description, $isReadOnly, $isMultiSelectable, $itemList, $selectedItems, $pleaseSelectEnabled);
+  public function addSelect($label, $name, $itemList = array(), $selectedItems = array(), $description="", $isDisabled=false, $isMultiSelectable = false, $pleaseSelectEnabled = true) {
+    $this->inputFields[] = new InputField($label, InputFieldType::SELECT, $name, "", "", $description, $isDisabled, $isMultiSelectable, $itemList, $selectedItems, $pleaseSelectEnabled);
   }
 
   public function getInputFields() {
@@ -87,13 +87,13 @@ class Form {
   private $enctype = "application/x-www-form-urlencoded";
 
   private $displayCapthca = false;
-  private $isReadOnly = false;
+  private $isDisabled = false;
 
   // construct form
   public function __construct($title, $action, $inputFields,
                               $description = "", $buttonText = "Submit", $buttonValue = 0,
                               $method = "GET", $enctype = "application/x-www-form-urlencoded",
-                              $displayCapthca = false, $isReadOnly = false) {
+                              $displayCapthca = false, $isDisabled = false) {
 
     // input fields should be specified
     if(!is_array($inputFields) || sizeof($inputFields) < 1 ) {
@@ -110,7 +110,7 @@ class Form {
     $this->method = $method;
     $this->enctype = $enctype;
     $this->displayCapthca = $displayCapthca;
-    $this->isReadOnly = $isReadOnly;
+    $this->isDisabled = $isDisabled;
 
   }
 
@@ -152,7 +152,7 @@ class InputField{
   private $value; // selected value for select, radio, checkbox
   private $placeholder = "";
   private $description;
-  private $isReadOnly = false;
+  private $isDisabled = false;
   private $isMultiSelectable = false;
   private $itemList = array(); // ($key=>value)
   private $selectedItems = array(); // $key
@@ -160,7 +160,7 @@ class InputField{
 
   // construct with all parameters
   public function __construct($label, $type, $name, $value = "", $placeholder = "",
-                              $description = "", $isReadOnly = false,
+                              $description = "", $isDisabled = false,
                               $isMultiSelectable = false, $itemList = array(),
                               $selectedItems = array(), $pleaseSelectEnabled = true) {
     $this->title = $label;
@@ -169,7 +169,7 @@ class InputField{
     $this->value = $value;
     $this->placeholder = $placeholder;
     $this->description = $description;
-    $this->isReadOnly = $isReadOnly;
+    $this->isDisabled = $isDisabled;
     $this->isMultiSelectable = $isMultiSelectable;
     $this->itemList = $itemList;
     $this->selectedItems = $selectedItems;
@@ -230,7 +230,7 @@ class InputField{
         }
       }
 
-      if($this->isReadOnly) {
+      if($this->isDisabled) {
         $disabledText = "disabled";
       }
 
@@ -293,7 +293,7 @@ class InputField{
       $namePostfix = "[]";
     }
 
-    if($this->isReadOnly) {
+    if($this->isDisabled) {
       $disabledText = "disabled";
     }
 
@@ -352,7 +352,7 @@ class InputField{
   }
 
   private function getDisableOption() {
-    return ($this->isReadOnly ? ' disabled' : '');
+    return ($this->isDisabled ? ' disabled' : '');
   }
 
 }
